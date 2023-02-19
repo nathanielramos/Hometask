@@ -1,0 +1,6 @@
+export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
+export const LOGOUT = 'LOGOUT';
+export const FILE_UPLOADING = "FILE_UPLOADING";
+export const FILE_UPLOADED = "FILE_UPLOADED";
+export const FILE_UPLOADFAIL = "FILE_UPLOADFAIL";
+export const MODEL_LIST = "MODEL_LIST";
