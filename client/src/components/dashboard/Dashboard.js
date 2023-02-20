@@ -25,9 +25,9 @@ const Dashboard = () => {
 
   return (
     <section className="container">
-      <h1 className="large text-primary">Dashboard</h1>
+      <h1 className="large text-primary">The best 3d model extension is GLTF in Three.js</h1>
       <p className="lead">
-        <i className="fas fa-user" /> Welcome
+        <i className="fas fa-user" /> Try to upload 3d models in the "3d_models" folder of project
       </p>
 
       <div className="btn-group">
@@ -37,7 +37,7 @@ const Dashboard = () => {
       {
         loaderr && (
           <div className="alert alert-danger" role="alert">
-            Please upload valid gltf model.
+            Please upload valid gltf/glb model.
           </div>
         )
       }
