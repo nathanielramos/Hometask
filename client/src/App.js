@@ -6,6 +6,10 @@ import Login from './components/auth/Login';
 import Dashboard from './components/dashboard/Dashboard';
 import NotFound from './components/layout/NotFound';
 import PrivateRoute from './components/routing/PrivateRoute';
+import PreviewModels from './components/models/PreviewModels';
+import ModelView from './components/models/ModelView';
+import Register from './components/auth/Register';
+
 import { LOGOUT } from './actions/types';
 
 // Redux
@@ -15,8 +19,6 @@ import { login } from './actions/auth';
 import setAuthToken from './utils/setAuthToken';
 
 import './App.css';
-import PreviewModels from './components/models/PreviewModels';
-import ModelView from './components/models/ModelView';
 
 const App = () => {
   useEffect(() => {
@@ -42,6 +44,7 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Landing />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
             <Route
               path="dashboard"
               element={<PrivateRoute component={Dashboard} />}
