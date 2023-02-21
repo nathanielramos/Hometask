@@ -1,39 +1,21 @@
 import React, { Suspense } from "react";
 import { useParams } from "react-router-dom";
-import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
-import { Canvas, useLoader, useFrame } from "@react-three/fiber";
+import { Canvas } from "@react-three/fiber";
 import { Environment, OrbitControls } from "@react-three/drei";
-import * as THREE from "three";
+
+import FbxModelViewer from "./FbxModelViewer";
+import GltfModelViewer from "./GltfModelViewer";
 
 const Model = (props) => {
 
     const { model } = props;
-    let mixer;
-    
-    const { scene, animations } = useLoader(GLTFLoader, `/api/models/${ model }`);
-    if (animations.length) {
-        mixer = new THREE.AnimationMixer(scene);
-        animations.forEach(clip => {
-            const action = mixer.clipAction(clip);
-            action.play();
-        });
-    }
-
-    useFrame((_state, delta) => {
-        mixer?.update(delta);
-    });
-
-    scene.traverse(child => {
-        if (child.isMesh) {
-            child.castShadow = true
-            child.receiveShadow = true
-            child.material.side = THREE.FrontSide
-        }
-    });
+    const modelPath = `/api/models/${ model }`;
 
     return (
         <>
-            <primitive object={scene} scale={0.7} />
+            {
+                model.endsWith(".fbx") ? <FbxModelViewer modelPath={ modelPath } /> : <GltfModelViewer modelPath={ modelPath } />
+            }
         </>
     );
 };
