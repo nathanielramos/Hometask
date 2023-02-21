@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
-// const config = require('config');
-// const db = config.get('mongoURI');
-const db = "mongodb://127.0.0.1:27017/modelviewer";
+const config = require('./');
+const db = config.mongoURI;
 
 const connectDB = async () => {
   try {

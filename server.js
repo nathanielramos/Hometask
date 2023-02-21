@@ -10,6 +10,9 @@ const usersRouter = require("./routes/api/users");
 connectDB();
 
 
+app.use(express.json());
+
+
 const uploadDir = path.join(__dirname, "uploads");
 if (!fs.existsSync(uploadDir)) {
     fs.mkdirSync(uploadDir);

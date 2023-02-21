@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const config = require('config');
+const config = require('../../config');
 const { check, validationResult } = require('express-validator');
 
 const User = require('../../models/User');
@@ -20,6 +20,7 @@ router.post(
   ).isLength({ min: 6 }),
   async (req, res) => {
     const errors = validationResult(req);
+    
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
@@ -55,7 +56,7 @@ router.post(
 
       jwt.sign(
         payload,
-        config.get('jwtSecret'),
+        config.jwtSecret,
         { expiresIn: '5 days' },
         (err, token) => {
           if (err) throw err;
