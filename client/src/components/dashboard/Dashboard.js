@@ -6,7 +6,7 @@ import { uploadModelFile } from '../../actions/modelOps';
 const Dashboard = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { loaderr } = useSelector(state => state.modelOps);
+  const { loaderr, extension } = useSelector(state => state.modelOps);
 
   const inputElement = document.createElement("input");
   inputElement.setAttribute("type", "file");
@@ -37,7 +37,7 @@ const Dashboard = () => {
       {
         loaderr && (
           <div className="alert alert-danger" role="alert">
-            Please upload valid fbx/gltf/glb model.
+            This is { extension } file. Please upload valid fbx/gltf/glb model.
           </div>
         )
       }

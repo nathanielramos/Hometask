@@ -39,8 +39,9 @@ router.post("/upload", upload.single('fileToUpload'), (req, res) => {
             });
         })
         .catch((err) => {
+            const extension = filename.split(".").pop().toUpperCase();
             fs.unlinkSync(path);
-            res.status(500).json({ parsingError: "GLTF file parsing error." });
+            res.status(500).json({ parsingError: "Model file parsing error.", extension });
         });
 });
 

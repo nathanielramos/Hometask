@@ -2,7 +2,8 @@ import { FILE_UPLOADED, FILE_UPLOADFAIL, MODEL_LIST } from "../actions/types";
 
 const initialState = {
     models: [],
-    loaderr: false
+    loaderr: false,
+    extension: ""
 };
 
 const modelOpsReducer = (state = initialState, action) => {
@@ -14,9 +15,11 @@ const modelOpsReducer = (state = initialState, action) => {
             models: payload
         };
     case FILE_UPLOADFAIL:
+        const { extension } = payload;
         return {
             ...state,
-            loaderr: true
+            loaderr: true,
+            extension
         }
     case FILE_UPLOADED:
         return {

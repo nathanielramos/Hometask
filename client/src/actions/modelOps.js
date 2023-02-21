@@ -22,9 +22,10 @@ export const uploadModelFile = (file, navigate) => async (dispatch) => {
       });
       window.location.href = `/models/${ filename }`;
     })
-    .catch(() => {
+    .catch((err) => {
       dispatch({
         type: FILE_UPLOADFAIL,
+        payload: err.response.data
       })
     });
 };
