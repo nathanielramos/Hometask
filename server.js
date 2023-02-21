@@ -1,8 +1,13 @@
 const express = require("express");
+const connectDB = require('./config/db');
 const fs = require("fs");
 const path = require("path");
 const app = express();
 const modelsRouter = require("./routes/api/models");
+
+// Connect Database
+connectDB();
+
 
 const uploadDir = path.join(__dirname, "uploads");
 if (!fs.existsSync(uploadDir)) {
