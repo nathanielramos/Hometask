@@ -1,6 +1,7 @@
 import {
   USER_LOADED,
   LOGIN_SUCCESS,
+  REGISTER_SUCCESS,
   LOGOUT
 } from '../actions/types';
 
@@ -22,6 +23,7 @@ function authReducer(state = initialState, action) {
         loading: false,
         user: payload
       };
+    case REGISTER_SUCCESS:
     case LOGIN_SUCCESS:
       return {
         ...state,

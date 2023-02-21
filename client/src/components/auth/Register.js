@@ -23,7 +23,7 @@ const Register = () => {
     if (password !== password2) {
       // setAlert('Passwords do not match', 'danger');
     } else {
-    alert(`${ password } -${ password2 }-${ password===password2 }`);
+    // alert(`${ password } -${ password2 }-${ password===password2 }`);
       dispatch(register({ name, email, password }));
     }
   };
