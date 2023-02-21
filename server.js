@@ -4,6 +4,7 @@ const fs = require("fs");
 const path = require("path");
 const app = express();
 const modelsRouter = require("./routes/api/models");
+const usersRouter = require("./routes/api/users");
 
 // Connect Database
 connectDB();
@@ -18,6 +19,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(express.static(uploadDir));
 
 app.use("/api/models", modelsRouter);
+app.use("/api/users", usersRouter);
 
 const PORT = process.env.PORT || 5000;
 
