@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getModels } from "../../actions/modelOps";
 
 const ModelCard = ({ model }) => {
-    const model_title = model.split("-")[1];
+    const model_title = model;
     
     return (
         <div className="col-md-4 p-2">
