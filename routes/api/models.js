@@ -2,7 +2,7 @@ const express = require("express");
 const multer = require("multer");
 const path = require("path");
 const fs = require("fs");
-const gltfValidator = require('gltf-validator');
+const { model_validator } = require("../../utils/validator");
 
 const router = express.Router();
 const uploadDir = path.join(__dirname, "..", "..", "uploads");
@@ -30,16 +30,16 @@ router.get("/:gltf", (req, res) => {
 });
 
 router.post("/upload", upload.single('fileToUpload'), (req, res) => {
-    const gltfContents = fs.readFileSync(req.file.path);
-    gltfValidator.validateBytes(new Uint8Array(gltfContents))
+    const { path, filename } = req.file;
+    model_validator(path)
         .then(() => {
             res.json({
                 success: true,
-                filename: req.file.filename
+                filename: filename
             });
         })
-        .catch(() => {
-            fs.unlinkSync(req.file.path);
+        .catch((err) => {
+            fs.unlinkSync(path);
             res.status(500).json({ parsingError: "GLTF file parsing error." });
         });
 });
